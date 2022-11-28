@@ -17,13 +17,13 @@ def laplace_1d(L, N):
     )
     e, S = map(list, zip(*sorted_eigs))
     t = np.linspace(0, L, N)
-    plt.plot(t, S[0])
-    plt.plot(t, S[1])
-    plt.plot(t, S[2])
-    plt.plot(t, S[3])
-    plt.plot(t, S[4])
-    print(e[0])
+    plt.plot(t, S[0] / S[0][-1], label="$\phi_1$")
+    plt.plot(t, -S[1] / S[0][-1], label="$\phi_2$")
+    plt.plot(t, -S[2] / S[0][-1], label="$\phi_3$")
+    plt.title("Eigenmodes for $\\frac{d^2}{dx^2}$ with $y(0) = y'(1) = 0$")
+    plt.legend()
+
     plt.show()
 
 
-laplace_1d(1, 1000)
+laplace_1d(1, 500)

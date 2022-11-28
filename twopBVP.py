@@ -15,6 +15,16 @@ def twopBVP(fvec, alpha, beta, L, N):
     return np.concatenate(([alpha], y, [beta]))
 
 
+def twopBVP_Neumann(fvec, alpha, beta, L, N):
+    dx = L / N
+    c = np.zeros(N)
+    c[0] = -2
+    c[1] = 1
+    T = scipy.linalg.toeplitz(c, c)
+    T[-1, -2] = 2
+    print(T)
+
+
 """
 f = lambda x: np.sin(x)
 # y''=x^3 => y = x^5/20+cx+d. This is
